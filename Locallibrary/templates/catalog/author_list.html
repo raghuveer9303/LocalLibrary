@@ -1,0 +1,16 @@
+{% extends "catalog/base_generic.html" %}
+
+{% block content %}
+  <h1>Author List</h1>
+  {% if object_list %}
+  <ul>
+    {% for author in object_list %}
+      <li>
+        <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{author.last_name}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no Authors</p>
+  {% endif %}
+{% endblock %}

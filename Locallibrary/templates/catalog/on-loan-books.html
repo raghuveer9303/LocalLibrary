@@ -1,0 +1,16 @@
+{% extends "catalog/base_generic.html" %}
+
+{% block content %}
+  <h1>On loan Book List</h1>
+ {% if perms.catalog.can_mark_returned %}
+  <ul>
+    {% for book in on_loan_books %}
+      <li>
+        <a href="{% url 'renew-book-librarian' book.id %}">RENEW {{book.book.title}} | {{book.borrower}} | {{book.due_back}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}
